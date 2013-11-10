@@ -87,6 +87,9 @@ class Graph(dict):
     def vertices(self):
         return self.keys()
 
+    def edges(self):
+        return list(set([w[0] for w in [v.values() for v in self.values()]]))
+
 
 def main(script, *args):
     v = Vertex('v')
@@ -97,6 +100,8 @@ def main(script, *args):
     print e
     g = Graph([v,w], [e])
     print g
+
+    print g.edges()
 
     print g.get_edge(v, w)
 
