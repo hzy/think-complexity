@@ -90,6 +90,12 @@ class Graph(dict):
     def edges(self):
         return list(set([w[0] for w in [v.values() for v in self.values()]]))
 
+    def out_vertices(self, v):
+        for e in self[v].values():
+            for w in e:
+                if w != v:
+                    yield w
+
 
 def main(script, *args):
     v = Vertex('v')
@@ -105,11 +111,12 @@ def main(script, *args):
 
     print g.get_edge(v, w)
 
-    g.remove_edge(e)
-    print g
-
     print g.vertices()
 
+    print list(g.out_vertices(v))
+
+    g.remove_edge(e)
+    print g
 
 if __name__ == '__main__':
     import sys
