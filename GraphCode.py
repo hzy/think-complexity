@@ -84,6 +84,9 @@ class Graph(dict):
         del self[v1][v2]
         del self[v2][v1]
 
+    def vertices(self):
+        return self.keys()
+
 
 def main(script, *args):
     v = Vertex('v')
@@ -99,6 +102,8 @@ def main(script, *args):
 
     g.remove_edge(e)
     print g
+
+    print g.vertices()
 
 
 if __name__ == '__main__':
