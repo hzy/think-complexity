@@ -79,6 +79,11 @@ class Graph(dict):
         except:
             return None
 
+    def remove_edge(self, e):
+        v1, v2 = e
+        del self[v1][v2]
+        del self[v2][v1]
+
 
 def main(script, *args):
     v = Vertex('v')
@@ -91,6 +96,9 @@ def main(script, *args):
     print g
 
     print g.get_edge(v, w)
+
+    g.remove_edge(e)
+    print g
 
 
 if __name__ == '__main__':
